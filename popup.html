@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 340px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #fafaf8;
+      color: #1a1a1a;
+      padding: 20px;
+    }
+    h1 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .subtitle { font-size: 12px; color: #888; margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #444; }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, select:focus { border-color: #00b894; }
+    .section { margin-bottom: 14px; }
+    .lang-row { display: flex; gap: 8px; align-items: end; }
+    .lang-col { flex: 1; }
+    .lang-arrow { font-size: 20px; color: #aaa; padding-bottom: 8px; }
+    .status { font-size: 12px; padding: 8px 12px; border-radius: 8px; margin-top: 12px; display: none; }
+    .status--ok { display: block; background: #d4edda; color: #155724; }
+    .status--err { display: block; background: #f8d7da; color: #721c24; }
+    .shortcut {
+      margin-top: 16px; padding: 12px; background: #f0f0ed;
+      border-radius: 8px; font-size: 12px; color: #555; line-height: 1.5;
+    }
+    .shortcut kbd {
+      background: #fff; border: 1px solid #ccc; border-radius: 3px;
+      padding: 1px 5px; font-size: 11px; font-family: monospace;
+    }
+    button {
+      width: 100%; padding: 10px; background: #2d3436; color: #fff;
+      border: none; border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
+    }
+    button:hover { background: #00b894; }
+    .author {
+      margin-top: 16px; padding-top: 12px; border-top: 1px solid #e0e0e0;
+      font-size: 11px; color: #999; line-height: 1.6;
+    }
+    .author a { color: #888; text-decoration: none; }
+    .author a:hover { color: #00b894; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>📝 Anki Translate Card</h1>
+  <p class="subtitle">Select a word → right-click → flashcard in Anki</p>
+
+  <div class="section">
+    <div class="lang-row">
+      <div class="lang-col">
+        <label for="sourceLang">From:</label>
+        <select id="sourceLang"></select>
+      </div>
+      <div class="lang-arrow">→</div>
+      <div class="lang-col">
+        <label for="targetLang">To:</label>
+        <select id="targetLang"></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <label for="deckSelect">Deck:</label>
+    <select id="deckSelect" style="display:none;"></select>
+    <input type="text" id="deckInput" placeholder="Vocabulary">
+    <div id="deckHint" style="font-size:11px; color:#aaa; margin-top:4px; display:none;"></div>
+  </div>
+
+  <button id="saveBtn">Save</button>
+  <button id="testBtn" style="margin-top: 8px; background: #636e72;">Test Anki connection</button>
+
+  <div class="status" id="status"></div>
+
+  <div class="shortcut">
+    <b>How to use:</b><br>
+    1. Select a word on any webpage<br>
+    2. Right-click → «📝 Anki: create flashcard»<br>
+    3. Or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd><br><br>
+    <b>Requires:</b> Anki desktop running with <a href="https://ankiweb.net/shared/info/2055492159" target="_blank" style="color:#555;">AnkiConnect</a><br>
+    <a href="https://github.com/bocharsky/anki-translate-card#readme" target="_blank" style="color:#888;">Setup guide & FAQ</a> · <a href="https://github.com/bocharsky/anki-translate-card/issues" target="_blank" style="color:#888;">Report a problem</a>
+  </div>
+
+  <div class="author">
+    Made by <a href="https://github.com/bocharsky" target="_blank">Konstantin Bocharskiy</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
